@@ -108,7 +108,7 @@ fn main() -> ! {
         bounds
             .into_styled(
                 PrimitiveStyleBuilder::default()
-                    .stroke_color(BinaryColor::On)
+                    .stroke_color(BinaryColor::Off)
                     .fill_color(BinaryColor::On)
                     .stroke_width(1)
                     .build(),
