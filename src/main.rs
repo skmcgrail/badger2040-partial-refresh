@@ -127,11 +127,7 @@ fn main() -> ! {
         display.partial_update(bounds.try_into().unwrap()).unwrap();
 
         current = (current + 8) % HEIGHT as i32;
-        if current == 0 {
-            channel = 0;
-        } else {
-            channel += 1;
-        }
+        channel = (channel + 1) % 16;
 
         count_down.start(MicrosDurationU32::millis(50));
         let _ = nb::block!(count_down.wait());
@@ -139,23 +135,10 @@ fn main() -> ! {
 }
 
 fn value_text(value: i32) -> &'static str {
-    match value {
-        0 => "0",
-        1 => "1",
-        2 => "2",
-        3 => "3",
-        4 => "4",
-        5 => "5",
-        6 => "6",
-        7 => "7",
-        8 => "8",
-        9 => "9",
-        10 => "10",
-        11 => "11",
-        12 => "12",
-        13 => "13",
-        14 => "14",
-        15 => "15",
-        _ => "N/A",
-    }
+    const CHANNEL_NUM: &[&str] = &[
+        "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+    ];
+
+    #[allow(clippy::cast_sign_loss)]
+    CHANNEL_NUM[(value % 16) as usize]
 }

@@ -16,7 +16,7 @@ defmt-rtt = "0.4.0"
 panic-probe = { version = "0.3.0", features = ["print-defmt"] }
 
 pimoroni_badger2040 = "0.2.0"
-uc8151 = { git = "https://github.com/skmcgrail/uc8151-rs", branch = "partialRefresh" }
+uc8151 = "0.1.4"
 nb = "1.0.0"
 embedded-graphics = "0.7.1"
 embedded-text = "0.5.0"
